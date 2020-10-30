@@ -4,11 +4,12 @@
   "author": "6.170 TAs",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node app.js",
     "awesome": "nodemon ./bin/www",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "axios": "^0.18.1",
