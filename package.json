@@ -8,8 +8,7 @@
     "awesome": "nodemon ./bin/www",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "postinstall": "npm run build"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.18.1",
@@ -24,10 +23,7 @@
     "vue": "^2.5.17",
     "vue-cookie": "^1.1.4",
     "vue-router": "^3.4.8",
-    "@vue/cli-plugin-babel": "^3.12.0",
-    "@vue/cli-plugin-eslint": "^3.0.3",
-    "@vue/cli-service": "^4.5.8",
-    "vue-template-compiler": "^2.5.17"
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.0",
