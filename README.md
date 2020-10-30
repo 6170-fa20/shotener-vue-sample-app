@@ -2,7 +2,7 @@
 This sample app showcases how to deply your Vue app to Heroku.
 
 ## The way Vue builds
-When you run "npm run build" Vue compiles your app into the dist folder. 'dist' is the folder name by default. You can change line 43 in app.js to use dist instead of public. The issue with that is now everytime you make a change you have to build the app again in order to see the changes in the dist folder. This is why Vue has a dev server. This dev server allows you to make changes and see them in real time. But this means you have to run 2 servers effectively. 
+When you run "npm run build" Vue compiles your app into the dist folder. 'dist' is the folder name by default. You can change line 43 in app.js to use dist instead of public so you only need to run one server. The issue with that is now every time you make a change you have to build the app again in order to see the changes in the dist folder. This is why Vue has a dev server. This dev server allows you to make changes and see them in real time. But this means you have to run 2 servers. 
 
 'npm run server' starts the Vue dev server whiles 'npm run awesome' starts the express server.
 
