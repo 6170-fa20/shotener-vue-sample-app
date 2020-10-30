@@ -14,3 +14,5 @@ Now let's talk about how to prepare your app for Heroku.
 - Add the dotenv package. This allows you to set variables in a .env file and access the vairables in your application through the process.env variable. Heroku uses the .env file to set environment variables, most notably of these is process.env.NODE_ENV which it sets to 'Production' so that your app knows it is in the Heroku environment. Carefully look at lines 7, 8 and 43 in app.js.
 - In your package.json make sure to start, build and serve are included in your scripts field. Heroku by default will run these. See this sample app's package.json to see what it should look like.
 - After this you can push your app to Heroku and you should be all set. Reach out to staff on Piazza or during Office Hours if you have any questions or run into any issues.
+
+This sample app is deployed here: https://shotener-vue-sample-app.herokuapp.com/
