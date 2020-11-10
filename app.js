@@ -6,6 +6,7 @@ const session = require('express-session');
 const cors = require('cors');
 require('dotenv').config(); // This allows us to use variables in .env file through process.env
 const isProduction = process.env.NODE_ENV === 'production'; // process.env will be used by heroku to provide configs and NODE_ENV will be set to production there.
+const history = require('connect-history-api-fallback');
 
 // import all the express routes we will be using
 const indexRouter = require('./routes/index');
@@ -40,6 +41,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // server html+css+js frontend
+app.use(history());
 app.use(express.static(path.join(__dirname, isProduction ? 'dist' : 'public'))); // in Heroku we want dist but for dev we want public so we don't have to rebuild everytime we change something.
 
 // connect url hierarchies to our routers
