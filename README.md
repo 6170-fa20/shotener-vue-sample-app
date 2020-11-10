@@ -13,6 +13,7 @@ Now let's talk about how to prepare your app for Heroku.
 ## Notes for your App
 - Add the dotenv package. This allows you to set variables in a .env file and access the vairables in your application through the process.env variable. Heroku uses the .env file to set environment variables, most notably process.env.NODE_ENV which it sets to 'Production' so that your app knows it is in the Heroku environment. Carefully look at lines 7, 8 and 45 in app.js.
 - To reroute unmatched urls to the Vue frontend, you have to use the connect-history-api-fallback package. See https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations for more details. Carefully look at lines 9 and 44 in app.js
+- In your package.json make sure you include the 2 new packages in your dependencies: connect-history-api-fallback and dotenv. See this app's package.json for an example.
 - In your package.json make sure that start, build and serve are included in your scripts field. Heroku by default will run these. See this sample app's package.json to see what it should look like.
 - After this you can push your app to Heroku and you should be all set. Reach out to staff on Piazza or during Office Hours if you have any questions or run into any issues.
 
