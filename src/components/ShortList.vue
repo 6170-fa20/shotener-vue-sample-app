@@ -47,35 +47,19 @@ export default {
   },
 
   created: function() {
-    eventBus.$on("create-short-success", res => {
-      this.shorts.push(res.data);
-    });
+    eventBus.$on("create-short-success", this.createShortHandler);
+    eventBus.$on("update-short-success", this.updateShortHandler);
+    eventBus.$on("delete-short-success", this.deleteShortHandler);
+    eventBus.$on("update-short-error",this.updateShortErrorHandler);
+    eventBus.$on("delete-short-error", this.deleteShortErrorHandler);
+  },
 
-    eventBus.$on("update-short-success", res => {
-      this.success = `Short name ${res.data.shortName} now resolves to ${
-        res.data.url
-      }`;
-      this.clearMessages();
-      this.loadShorts();
-    });
-
-    eventBus.$on("delete-short-success", res => {
-      this.success = `Short name ${res.shortName} has been deleted`;
-      this.clearMessages();
-      this.loadShorts();
-    });
-
-    eventBus.$on("update-short-error", res => {
-      this.error = `Error updating short ${res.data.shortName}`;
-      this.clearMessages();
-      this.loadShorts();
-    });
-
-    eventBus.$on("delete-short-error", res => {
-      this.error = `Error deleting short ${res.shortName}`;
-      this.clearMessages();
-      this.loadShorts();
-    });
+  beforeDestry: function () {
+    eventBus.$off("create-short-success", this.createShortHandler);
+    eventBus.$off("update-short-success", this.updateShortHandler);
+    eventBus.$off("delete-short-success", this.deleteShortHandler);
+    eventBus.$off("update-short-error",this.updateShortErrorHandler);
+    eventBus.$off("delete-short-error", this.deleteShortErrorHandler);
   },
 
   mounted: function() {
@@ -88,12 +72,36 @@ export default {
         this.shorts = response.data;
       });
     },
-
     clearMessages: function() {
       setInterval(() => {
         this.success = "";
         this.error = "";
       }, 5000);
+    },
+    createShortHandler: function(res) {
+      this.shorts.push(res.data);
+    },
+    updateShortHandler: function(res) {
+      this.success = `Short name ${res.data.shortName} now resolves to ${
+        res.data.url
+      }`;
+      this.clearMessages();
+      this.loadShorts();
+    },
+    deleteShortHandler: function(res) {
+      this.success = `Short name ${res.shortName} has been deleted`;
+      this.clearMessages();
+      this.loadShorts();
+    },
+    updateShortErrorHandler: function(res) {
+      this.error = `Error updating short ${res.data.shortName}`;
+      this.clearMessages();
+      this.loadShorts();
+    },
+    deleteShortErrorHandler: function(res) {
+      this.error = `Error deleting short ${res.shortName}`;
+      this.clearMessages();
+      this.loadShorts();
     }
   }
 };

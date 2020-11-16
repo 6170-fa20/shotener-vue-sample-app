@@ -41,30 +41,36 @@ export default {
       this.isSignedIn = true;
     }
 
-    eventBus.$on("signin-success", (userName) => {
-      this.$cookie.set('url-shortener-auth', userName);
-      this.isSignedIn = true;
-      this.messages.push("You have been signed in!");
-      this.clearMessages();
-    });
-    
-    eventBus.$on("signout-success", () => {
-      this.$cookie.set('url-shortener-auth', '');
-      this.isSignedIn = false;
-      this.messages.push("You have been signed out!");
-      this.clearMessages();
-    });
-
-    eventBus.$on("signup-success", () => {
-      this.messages.push("You have been signed up! Sign in to continue.");
-      this.clearMessages();
-    });
+    eventBus.$on("signin-success", this.signInHandler);
+    eventBus.$on("signout-success", this.signOutHandler);
+    eventBus.$on("signup-success", this.signUpHandler);
+  },
+  beforeDestroy: function () {
+    eventBus.$off("signin-success", this.signInHandler);
+    eventBus.$off("signout-success", this.signOutHandler);
+    eventBus.$off("signup-success", this.signUpHandler);
   },
   methods: {
     clearMessages: function() {
       setInterval(() => {
         this.messages = [];
       }, 5000);
+    },
+    signInHandler: function (userName) {
+      this.$cookie.set('url-shortener-auth', userName);
+      this.isSignedIn = true;
+      this.messages.push("You have been signed in!");
+      this.clearMessages();
+    },
+    signOutHandler: function () {
+      this.$cookie.set('url-shortener-auth', '');
+      this.isSignedIn = false;
+      this.messages.push("You have been signed out!");
+      this.clearMessages();
+    },
+    signUpHandler: function () {
+      this.messages.push("You have been signed up! Sign in to continue.");
+      this.clearMessages();
     }
   }
 };

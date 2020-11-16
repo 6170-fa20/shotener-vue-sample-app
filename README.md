@@ -18,3 +18,8 @@ Now let's talk about how to prepare your app for Heroku.
 - After this you can push your app to Heroku and you should be all set. Reach out to staff on Piazza or during Office Hours if you have any questions or run into any issues.
 
 This sample app is deployed here: https://shotener-vue-sample-app.herokuapp.com/
+
+## General Notes
+- To prevent accidentally assigning the same event listener multiple times for a specific event, you should clean up the event listeners when the component is destroyed. See components/UserSettings.vue and components/UserSettings.vue to see an example of how to handle this.
+- The sample app that showcases how to use PostgreSQL as the persistent storage for your app can be found here.
+https://github.com/6170-fa20/postgresql-sample-app
