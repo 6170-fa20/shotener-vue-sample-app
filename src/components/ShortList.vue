@@ -54,7 +54,7 @@ export default {
     eventBus.$on("delete-short-error", this.deleteShortErrorHandler);
   },
 
-  beforeDestry: function () {
+  beforeDestroy: function () {
     eventBus.$off("create-short-success", this.createShortHandler);
     eventBus.$off("update-short-success", this.updateShortHandler);
     eventBus.$off("delete-short-success", this.deleteShortHandler);
